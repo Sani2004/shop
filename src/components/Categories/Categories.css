@@ -1,0 +1,175 @@
+/* Categories.css */
+.categories {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.categories-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  animation: fadeIn 1s ease;
+  color: #2c3e50;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 4px;
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  border-radius: 2px;
+  animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+  0%, 100% { background: linear-gradient(45deg, #3498db, #2ecc71); }
+  33% { background: linear-gradient(45deg, #2ecc71, #3498db); }
+  66% { background: linear-gradient(45deg, #3498db, #2ecc71); }
+}
+
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.category-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  animation: slideUp 0.8s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
+.category-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, #3498db, #2ecc71, #3498db);
+  background-size: 400% 400%;
+  animation: gradientBorder 4s ease infinite;
+  border-radius: 20px;
+  padding: 2px;
+  z-index: -1;
+}
+
+@keyframes gradientBorder {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.category-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(52, 152, 219, 0.2);
+}
+
+.category-image {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.category-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(52, 152, 219, 0.3), rgba(46, 204, 113, 0.3));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.category-card:hover .category-image::before {
+  opacity: 1;
+}
+
+.category-info {
+  padding: 2rem;
+  text-align: center;
+}
+
+.category-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.category-description {
+  color: #7f8c8d;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.shop-now-btn {
+  background: linear-gradient(45deg, #3498db, #2ecc71);
+  background-size: 300% 300%;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  text-decoration: none;
+  display: inline-block;
+  animation: buttonGradient 3s ease-in-out infinite;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@keyframes buttonGradient {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.shop-now-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: 1fr;
+  }
+}
